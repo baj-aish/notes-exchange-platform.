@@ -1,0 +1,15 @@
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
+import { firebaseConfig } from "../firebaseConfig.js";
+
+export const isFirebaseConfigured = Object.values(firebaseConfig).every(
+  (value) => value && !String(value).startsWith("PASTE_YOUR_")
+);
+
+const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const functions = getFunctions(app);
